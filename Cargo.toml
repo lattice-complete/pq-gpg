@@ -1,0 +1,45 @@
+[package]
+name = "pq-gpg"
+version = "0.1.0"
+edition = "2021"
+description = "Post-Quantum GPG implementation in Rust"
+license = "MIT OR Apache-2.0"
+
+[dependencies]
+# Post-quantum cryptography
+pqc_kyber = "0.7"
+pqc_dilithium = "0.5"
+sphincsplus = "0.8"
+
+# Standard cryptography
+ring = "0.17"
+aes-gcm = "0.10"
+sha2 = "0.10"
+rand = "0.8"
+
+# Serialization and encoding
+serde = { version = "1.0", features = ["derive"] }
+bincode = "1.3"
+base64 = "0.22"
+hex = "0.4"
+
+# CLI and utilities
+clap = { version = "4.0", features = ["derive"] }
+anyhow = "1.0"
+thiserror = "1.0"
+chrono = { version = "0.4", features = ["serde"] }
+
+# Async runtime (for future networking features)
+tokio = { version = "1.0", features = ["full"] }
+
+[dev-dependencies]
+criterion = "0.5"
+proptest = "1.0"
+
+[[bin]]
+name = "pq-gpg"
+path = "src/main.rs"
+
+[lib]
+name = "pq_gpg"
+path = "src/lib.rs"
