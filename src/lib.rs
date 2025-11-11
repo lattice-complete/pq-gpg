@@ -9,6 +9,7 @@ pub mod key;
 pub mod armor;
 pub mod signature;
 pub mod encryption;
+pub mod keyring;
 pub mod error;
 pub mod constants;
 

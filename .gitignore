@@ -1,0 +1,34 @@
+# Rust build artifacts
+/target/
+Cargo.lock
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Test and benchmark outputs
+*.profdata
+*.profraw
+/benches/results/
+
+# Key files and test data
+*.key
+*.pub
+*.gpg
+*.asc
+/test_keys/
+/keyring/
+
+# Build artifacts
+*.o
+*.so
+*.dylib
+*.dll
+
+# Backup files
+*.bak
+*.backup
