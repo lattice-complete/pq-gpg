@@ -8,8 +8,8 @@ license = "MIT OR Apache-2.0"
 [dependencies]
 # Post-quantum cryptography
 pqc_kyber = "0.7"
-pqc_dilithium = "0.5"
-sphincsplus = "0.8"
+pqc_dilithium = "0.2"
+# sphincsplus = "0.7"  # Package not available on crates.io yet
 
 # Standard cryptography
 ring = "0.17"
@@ -32,9 +32,13 @@ chrono = { version = "0.4", features = ["serde"] }
 # Async runtime (for future networking features)
 tokio = { version = "1.0", features = ["full"] }
 
+# File system utilities
+dirs = "5.0"
+
 [dev-dependencies]
 criterion = "0.5"
 proptest = "1.0"
+tempfile = "3.8"
 
 [[bin]]
 name = "pq-gpg"
@@ -43,3 +47,7 @@ path = "src/main.rs"
 [lib]
 name = "pq_gpg"
 path = "src/lib.rs"
+
+[[bench]]
+name = "crypto_benchmarks"
+harness = false

@@ -1,8 +1,11 @@
 //! SLH-DSA (SPHINCS+) digital signature implementation
+//!
+//! NOTE: SPHINCS+ implementation is currently disabled as the sphincsplus
+//! crate is not available on crates.io. This is a stub implementation
+//! that returns "not implemented" errors.
 
 use super::DigitalSignature;
 use crate::error::{PqGpgError, Result};
-use rand::rngs::OsRng;
 
 pub struct SphincsPlus128s;
 pub struct SphincsPlus256s;
@@ -17,23 +20,23 @@ impl DigitalSignature for SphincsPlus128s {
     type PublicKey = Vec<u8>;
     type SecretKey = Vec<u8>;
     type Signature = Vec<u8>;
-    
+
     fn keygen() -> Result<(Self::PublicKey, Self::SecretKey)> {
-        // TODO: Implement using sphincsplus crate
-        // This is a placeholder implementation
-        let mut rng = OsRng;
-        // Generate keys using SPHINCS+ parameters
-        todo!("Implement SPHINCS+ keygen")
+        Err(PqGpgError::UnsupportedAlgorithm(
+            "SPHINCS+ is not yet implemented (library not available)".to_string()
+        ))
     }
-    
-    fn sign(sk: &Self::SecretKey, message: &[u8]) -> Result<Self::Signature> {
-        // TODO: Implement SPHINCS+ signing
-        todo!("Implement SPHINCS+ signing")
+
+    fn sign(_sk: &Self::SecretKey, _message: &[u8]) -> Result<Self::Signature> {
+        Err(PqGpgError::UnsupportedAlgorithm(
+            "SPHINCS+ is not yet implemented (library not available)".to_string()
+        ))
     }
-    
-    fn verify(pk: &Self::PublicKey, message: &[u8], signature: &Self::Signature) -> Result<bool> {
-        // TODO: Implement SPHINCS+ verification
-        todo!("Implement SPHINCS+ verification")
+
+    fn verify(_pk: &Self::PublicKey, _message: &[u8], _signature: &Self::Signature) -> Result<bool> {
+        Err(PqGpgError::UnsupportedAlgorithm(
+            "SPHINCS+ is not yet implemented (library not available)".to_string()
+        ))
     }
 }
 
@@ -41,4 +44,26 @@ impl SphincsPlus256s {
     pub fn new() -> Self { Self }
 }
 
-// TODO: Implement DigitalSignature trait for SphincsPlus256s
+impl DigitalSignature for SphincsPlus256s {
+    type PublicKey = Vec<u8>;
+    type SecretKey = Vec<u8>;
+    type Signature = Vec<u8>;
+
+    fn keygen() -> Result<(Self::PublicKey, Self::SecretKey)> {
+        Err(PqGpgError::UnsupportedAlgorithm(
+            "SPHINCS+ is not yet implemented (library not available)".to_string()
+        ))
+    }
+
+    fn sign(_sk: &Self::SecretKey, _message: &[u8]) -> Result<Self::Signature> {
+        Err(PqGpgError::UnsupportedAlgorithm(
+            "SPHINCS+ is not yet implemented (library not available)".to_string()
+        ))
+    }
+
+    fn verify(_pk: &Self::PublicKey, _message: &[u8], _signature: &Self::Signature) -> Result<bool> {
+        Err(PqGpgError::UnsupportedAlgorithm(
+            "SPHINCS+ is not yet implemented (library not available)".to_string()
+        ))
+    }
+}
